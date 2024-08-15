@@ -1,0 +1,13 @@
+<%-include("./partials/header")%>
+<div class="bg-blue-800 min-h-screen w-full text-white flex justify-center items-center">
+    <div class="w-full max-w-md mx-4 sm:mx-auto">
+        <form class="flex flex-col bg-transparent gap-5 text-black p-6 rounded-md shadow-md" action="/createitem" method="post">
+            <h1 class="text-center font-bold text-white text-2xl sm:text-3xl mb-4">CREATE YOUR PRODUCT</h1>
+            <input class="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="title" placeholder="Title">
+            <input class="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="price" placeholder="Price">
+            <input class="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="productimage" placeholder="Product Image">
+            <button class="w-full bg-slate-800 text-lg sm:text-2xl py-3 text-white border rounded-md hover:bg-slate-700 transition-all">Create</button>
+        </form>
+    </div>
+</div>
+<%-include("./partials/footer")%>

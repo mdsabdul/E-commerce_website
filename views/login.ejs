@@ -1,0 +1,13 @@
+<%- include("./partials/header") %>
+<div class="bg-blue-800 min-h-screen w-full text-white flex items-center justify-center">
+    <form class="flex relative w-full max-w-lg flex-col bg-transparent gap-5 text-black sm:w-full" action="/users/login" method="post">
+        <h1 class="text-center text-white text-3xl sm:text-4xl md:text-5xl font-bold">SIGN IN / LOGIN</h1>
+        <div class="flex flex-col gap-5 w-full">
+            <input type="text" name="username" placeholder="Username" class="p-3 text-black rounded-md border border-gray-300">
+            <input type="password" name="password" placeholder="Password" class="p-3 text-black rounded-md border border-gray-300">
+            <button class="bg-slate-800 text-lg sm:text-xl md:text-2xl py-3 sm:py-4 text-white border rounded-lg hover:bg-slate-700 transition duration-300">Login</button>
+        </div>
+        <p class="text-white text-sm sm:text-base md:text-lg text-center">Don't Have An Account? <a class="text-yellow-500 hover:underline" href="/users/register">Register!</a></p>
+    </form>
+</div>
+<%- include("./partials/footer") %>

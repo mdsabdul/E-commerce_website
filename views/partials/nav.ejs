@@ -1,0 +1,20 @@
+<nav class="h-[14vh] bg-blue-900 flex items-center justify-between px-10 ">
+    <div><img class="h-[3.8vw] w-[3.8vw] rounded-full cursor-pointer " src="/images/pant.webp" alt=""></div>
+   <div class="flex gap-5">
+    <a href="/">HOME</a>
+    <a href="/about">ABOUT</a>
+    <a href="/product">PRODUCTS</a>
+    <a href="/contact">CONTACTUS</a>
+    <a href="/createproduct">CREATEPRODUCT</a>
+    <a class="text-2xl" href="/cart"><i class="ri-shopping-cart-line relative ">
+      <%if(!newcart || !newcart.product){%>
+        <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold">0</small>
+        <%}else{%>
+          <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold"><%=newcart.product.length%></small>
+       <%}%>
+    </i></a>
+    <a href="/account">
+      <img class="h-[2vw] w-[2vw] rounded-full" src="<%=user.image%>" alt="">
+    </a>
+   </div>
+  </nav>

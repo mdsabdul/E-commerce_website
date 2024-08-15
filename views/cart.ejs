@@ -1,0 +1,45 @@
+<%-include("./partials/header")%>
+  <div class="bg-blue-800 h-[100%] w-full text-white overflow-y-auto pt-[7vw] ">
+    <div class="fixed top-[0] w-full">
+      <%-include("./partials/nav")%>
+    </div>
+    <h1 class="pl-10 text-2xl text-center pb-5 font-bold"> --My Cart--</h1>
+   
+    <div class="h-[86vh] w-full  flex gap-8 px-10 pt-5 flex-wrap justify-center ">
+      <% if(newcart===null || newcart.product.length === 0){%>
+        <p>No items added</p>
+        <% }else{%>
+          <%newcart.product.forEach((item)=>{%>
+            <div class="w-[20vw] h-[80%] bg-blue-900 hover:shadow-xl rounded overflow-hidden cursor-pointer">
+              <img class="h-[45vh] w-full object-cover object-center " src="<%=item.productimage%>" alt="">
+              <h1 class="px-4 pt-5 font-semibold text-on-center[1.2rem] capitalize">
+                <%=item.title%>
+              </h1>
+              <h1 class="px-4 pt-2 font-semibold text-on-center[1.2rem] capitalize">Price : <%=item.price%>
+              </h1>
+              <div class="flex justify-between px-4 py-2">
+                <a href="###" class="bg-yellow-700 px-3 py-2 rounded">SAVE FOR LATER</a>
+                <a href="/delete/<%=item._id%>" class="bg-yellow-700 px-3 py-2 rounded">REMOVE</a>
+              </div>
+            </div>
+            <% })%>
+              <% }%>
+
+  </div>
+  <h1 class="text-center text-2xl font bold"> PAYMENT CHECKOUT</h1>
+  <div class="mx-auto px-10 py-5 bg-blue-900 h-[15vw] ">
+     <h1 class=" font-semibold text-[1.5vw]  pb-5">Price Details</h1>
+     <% 
+     let totalPrice = 0;
+     newcart.product.forEach((item) => {
+        totalPrice += parseFloat(item.price);
+     });
+ %>
+ <h4 class="mb-5 font-semibold">Price (<small><%= newcart.product.length %></small> items) - <small class="text-[1vw]"><%= totalPrice %></small></h4>
+ <h4 class="mb-5 font-semibold">Total Amount - <small class="text-[1vw]"><%= totalPrice %></small></h4>
+      <a class="bg-yellow-400 px-4 py-2 text-black font-semibold rounded" href="/placeorder">Place order</a>
+  </div>
+  </div>
+
+
+  <%-include("./partials/footer")%>
