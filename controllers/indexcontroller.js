@@ -8,11 +8,32 @@ const transport = nodemailer.createTransport({
        pass: "nlza xyuf auys rayi"
     }
  })
-exports.aboutpage = (req, res) => {
-    res.render("about", { user: req.user })
+exports.aboutpage =async(req, res) => {
+try {
+    const cart = await Cart.findOne({ user: req.user._id })
+    .populate("user")
+    .populate({
+        path: "product",
+        model: "product"
+    });
+    res.render("about", { user:req.user,newcart:cart })
+} catch (error) {
+    res.send(error)
 }
-exports.contactpage = (req, res) => {
-    res.render("contact", { user: req.user })
+
+}
+exports.contactpage = async(req, res) => {
+    try {
+        const cart = await Cart.findOne({ user: req.user._id })
+        .populate("user")
+        .populate({
+            path: "product",
+            model: "product"
+        });
+        res.render("contact", { user:req.user,newcart:cart })
+    } catch (error) {
+        res.send(error)
+    }
 }
 exports.accountpage = (req, res) => {
     res.render("account", { user: req.user })
