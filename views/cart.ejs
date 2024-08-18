@@ -1,12 +1,12 @@
 <%-include("./partials/header")%>
-  <div class="bg-blue-800 h-[100%] w-full text-white overflow-y-auto pt-[7vw] ">
+  <div class="bg-blue-800 h-[100%] w-full text-white overflow-y-auto pt-[7vw] relative z-10">
     <div class="fixed top-[0] w-full">
       <%-include("./partials/nav")%>
     </div>
     <h1 class="pl-10 text-2xl text-center pb-5 font-bold"> --My Cart--</h1>
-   
-    <div class="h-[86vh] w-full  flex gap-8 px-10 pt-5 flex-wrap justify-center ">
-      <% if(newcart===null || newcart.product.length === 0){%>
+
+    <div class="h-[86vh] w-full  flex gap-8 px-10 pt-5 flex-wrap justify-center   ">
+      <% if(!newcart  || newcart.product.length === 0){%>
         <p>No items added</p>
         <% }else{%>
           <%newcart.product.forEach((item)=>{%>
@@ -25,21 +25,38 @@
             <% })%>
               <% }%>
 
-  </div>
-  <h1 class="text-center text-2xl font bold"> PAYMENT CHECKOUT</h1>
-  <div class="mx-auto px-10 py-5 bg-blue-900 h-[15vw] ">
-     <h1 class=" font-semibold text-[1.5vw]  pb-5">Price Details</h1>
-     <% 
-     let totalPrice = 0;
-     newcart.product.forEach((item) => {
-        totalPrice += parseFloat(item.price);
-     });
- %>
- <h4 class="mb-5 font-semibold">Price (<small><%= newcart.product.length %></small> items) - <small class="text-[1vw]"><%= totalPrice %></small></h4>
- <h4 class="mb-5 font-semibold">Total Amount - <small class="text-[1vw]"><%= totalPrice %></small></h4>
-      <a class="bg-yellow-400 px-4 py-2 text-black font-semibold rounded" href="/placeorder">Place order</a>
-  </div>
+           
+    </div>
+  
+    
+    
   </div>
 
+  <div class="">
+    <div class="mx-auto px-10 py-5 h-[15vw]  ">
+      <h1 class=" text-2xl font-bold"> PAYMENT CHECKOUT</h1>
+      <h1 class=" font-semibold text-[1.5vw]  pb-5">Price Details</h1>
+      <% if(!newcart  || newcart.product.length === 0){%>
+        <p class="mb-5">No items added</p>
+        <% }else{%>
+      <% let totalPrice=0;
+       newcart.product.forEach((item)=> {
+        totalPrice += parseFloat(item.price);
+        });
+        %>
+
+        <h4 class="mb-4 font-semibold">Price (<small>
+          
+            <%= newcart.product.length %>
+          </small> items) - <small class="text-[1vw]">
+            <%= totalPrice %>
+          </small></h4>
+        <h4 class="mb-4 font-semibold">Total Amount - <small class="text-[1vw]">
+            <%= totalPrice %>
+          </small></h4>
+        <%}%>
+        <a class="bg-yellow-400 px-4 py-2 mt-10 text-black font-semibold rounded" href="/placeorder">Place order</a>
+    </div>
+  </div>
 
   <%-include("./partials/footer")%>

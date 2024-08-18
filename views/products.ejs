@@ -1,11 +1,11 @@
 <%-include("./partials/header")%>
-<div class="bg-blue-800 h-[100%] w-full text-white overflow-y-auto py-[7vw] ">
+<div class="bg-blue-800 h-[100%] w-full text-white overflow-y-auto pt-[7vw] ">
    <div class="fixed top-[0] w-full">
     <%-include("./partials/nav")%>
    </div>
-    <div class="h-[86vh] w-full  flex gap-8 px-10 py-5 flex-wrap justify-center ">
+    <div class=" w-full  flex gap-8 px-10 mt-10  flex-wrap justify-center pb-5 ">
         <% allproducts.forEach((item)=>{%>
-           <div class="w-[17vw] h-[52vh] bg-slate-800  rounded-[5px] overflow-hidden text-white" >
+           <div class="w-[17vw] h-[52vh] bg-slate-800   rounded-[5px] overflow-hidden text-white " >
             <img class="h-[35vh] w-full object-cover object-top" src="<%= item.productimage%>" alt="">
                <h4 class="px-4 pt-5 font-semibold text-on-center[1.2rem] capitalize"><%=item.title%></h4>
                <h4 class="px-4">Price - <%=item.price%> </h4>

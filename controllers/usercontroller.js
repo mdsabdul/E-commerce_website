@@ -1,5 +1,7 @@
 const User = require("../model/usermodel")
 const nodemailer = require("nodemailer")
+const Imagekit = require("imagekit")
+require("dotenv").config()
 const passport = require("passport")
 const localStretegy = require("passport-local")
 passport.use(new localStretegy(User.authenticate()))
@@ -54,6 +56,21 @@ exports.isLoggedin = (req, res, next) => {
       res.redirect("/users/login")
    }
 }
-exports.changeprofile = (req, res, file) => {
-
+const image = new Imagekit({
+   publicKey: process.env.publicKey,
+   privateKey:process.env.privateKey,
+   urlEndpoint: process.env.urlEndpoint
+})
+exports.changeprofile =async(req, res) => {
+   // console.log(req.files);
+   const user = req.user
+  const {url,fileId} =await image.upload({
+   file: req.files.profileimage.data,
+   fileName: req.files.profileimage.name,
+   
+  })
+  user.image = url
+  await user.save()
+  res.redirect("/account")
+    
 }

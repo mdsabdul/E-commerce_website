@@ -8,14 +8,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const db = require("./model/connectmodel")
 var app = express();
-
+const fileupload = require("express-fileupload")
 const passport = require("passport")
 const session = require("express-session")
 const User = require("./model/usermodel")
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(fileupload())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
