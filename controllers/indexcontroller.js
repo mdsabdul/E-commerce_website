@@ -1,11 +1,12 @@
 const Cart = require("../model/cartmodel");
 const nodemailer = require("nodemailer")
+require("dotenv").config()
 //nodemailer
 const transport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-       user: "mdsabdul088@gmail.com",
-       pass: "nlza xyuf auys rayi"
+       user: process.env.user,
+       pass: process.env.pass
     }
  })
 exports.aboutpage =async(req, res) => {
