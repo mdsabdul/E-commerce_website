@@ -1,14 +1,14 @@
 <%- include("./partials/header") %>
 <div class="bg-blue-800 min-h-screen w-full text-white flex justify-center items-center">
 
-    <form class=" flex flex-col bg-transparent gap-5 text-black lg:w-1/2 sm:w-[90%]   mx-auto " action="/users/register" method="post">
+    <form class=" flex flex-col bg-transparent gap-5 text-black lg:w-1/2 sm:w-full px-5   mx-auto " action="/users/register" method="post">
         <h1 class="text-center text-white text-3xl">SIGNUP</h1>
-        <input class="px-3 py-3 rounded" type="text" name="name" placeholder="Name">
-        <input class="px-3 py-3 rounded" type="text" name="username" placeholder="Username">
-        <input class="px-3 py-3 rounded" type="email" name="email" placeholder="Email">
-        <input class="px-3 py-3 rounded" type="text" name="image" placeholder="Image URL">
-        <input class="px-3 py-3 rounded" type="password" name="password" placeholder="Password">
-        <button class="w-full bg-slate-800 text-2xl py-3 text-white border rounded-[1vw]">Register</button>
+        <input class="px-3 py-4 rounded" type="text" name="name" placeholder="Name">
+        <input class="px-3 py-4 rounded" type="text" name="username" placeholder="Username">
+        <input class="px-3 py-4 rounded" type="email" name="email" placeholder="Email">
+        <input class="px-3 py-4 rounded" type="text" name="image" placeholder="Image URL">
+        <input class="px-3 py-4 rounded" type="password" name="password" placeholder="Password">
+        <button class="w-full bg-slate-800 text-2xl py-4 text-white border rounded-[1vw]">Register</button>
         <p class="text-white text-center">Already have an account? <a class="text-yellow-400" href="/users/login">Login!</a></p>
     </form>
 
