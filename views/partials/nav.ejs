@@ -37,8 +37,10 @@ const navlinks = document.querySelector(".navlinks")
 const menuclose = document.querySelector(".menuclose")
 menucopen.addEventListener("click",function(){
   navlinks.style.display ="flex"
+  menucopen.style.display ="none"
 })
 menuclose.addEventListener("click",function(){
   navlinks.style.display ="none"
+    menucopen.style.display ="flex"
 })
   </script>
