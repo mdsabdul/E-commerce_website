@@ -1,15 +1,15 @@
 <%- include("./partials/header") %>
-<div class="bg-blue-800 min-h-screen w-full text-white flex justify-center items-center">
+<div class="bg-blue-800 min-h-screen w-full text-white flex justify-center items-center ">
 
-    <form class=" flex flex-col bg-transparent gap-5 text-black lg:w-1/2 sm:w-full px-4   mx-auto " action="/users/register" method="post">
-        <h1 class="text-center text-white text-3xl sm:text-6xl">SIGNUP</h1>
-        <input class="px-3 py-8 rounded sm:text-4xl" type="text" name="name" placeholder="Name">
-        <input class="px-3 py-8 rounded sm:text-4xl" type="text" name="username" placeholder="Username">
-        <input class="px-3 py-8 rounded sm:text-4xl" type="email" name="email" placeholder="Email">
-        <input class="px-3 py-8 rounded sm:text-4xl" type="text" name="image" placeholder="Image URL">
-        <input class="px-3 py-8 rounded sm:text-4xl" type="password" name="password" placeholder="Password">
-        <button class="w-full bg-slate-800 text-2xl py-8 text-white border rounded-[1vw] sm:text-4xl">Register</button>
-        <p class="text-white text-center sm:text-3xl">Already have an account? <a class="text-yellow-400" href="/users/login">Login!</a></p>
+    <form class=" flex flex-col bg-transparent gap-5 text-black lg:w-1/2 md:w-full px-4   mx-auto " action="/users/register" method="post">
+        <h1 class="text-center text-white lg:text-5xl font-semibold md:text-8xl">SIGNUP</h1>
+        <input class="px-3 md:py-9 lg:py-4 lg:text-2xl rounded md:text-4xl" type="text" name="name" placeholder="Name">
+        <input class="px-3 md:py-9 lg:py-4 lg:text-2xl rounded md:text-4xl" type="text" name="username" placeholder="Username">
+        <input class="px-3 md:py-9 lg:py-4 lg:text-2xl rounded md:text-4xl" type="email" name="email" placeholder="Email">
+        <input class="px-3 md:py-9 lg:py-4 lg:text-2xl rounded md:text-4xl" type="text" name="image" placeholder="Image URL">
+        <input class="px-3 md:py-9 lg:py-4 lg:text-2xl rounded md:text-4xl" type="password" name="password" placeholder="Password">
+        <button class="w-full bg-slate-800 text-2xl py-8 lg:py-4 font-semibold lg:text-2xl text-white border rounded-[1vw] md:text-5xl">Register</button>
+        <p class="text-white text-center lg:text-2xl md:text-5xl ">Already have an account? <a class="text-yellow-400" href="/users/login">Login!</a></p>
     </form>
 
 </div>
