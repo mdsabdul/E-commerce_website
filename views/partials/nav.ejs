@@ -1,57 +1,67 @@
 <nav class="py-7 bg-blue-900 flex items-center justify-between px-10 lg-w-full sm:w-full relative">
-    <div><h1 class="flex items-center text-2xl sm:text-5xl  font-bold">SH<img class="h-[3.8vw] sm:h-[5.5vw] w-[3.8vw] sm:w-[5.5vw] rounded-full cursor-pointer " src="/images/pant.webp" alt="">RTS</h1></div>
-   <div class="flex gap-5 sm:hidden lg:flex">
+  <div>
+    <h1 class="flex items-center text-2xl sm:text-5xl  font-bold">SH<img
+        class="h-[3.8vw] sm:h-[5.5vw] w-[3.8vw] sm:w-[5.5vw] rounded-full cursor-pointer " src="/images/pant.webp"
+        alt="">RTS</h1>
+  </div>
+  <div class="flex gap-5 sm:hidden lg:flex">
     <a class="hover:underline" href="/">HOME</a>
     <a class="hover:underline" href="/about">ABOUT</a>
     <a class="hover:underline" href="/product">PRODUCTS</a>
     <a class="hover:underline" href="/contact">CONTACTUS</a>
     <a class="hover:underline" href="/createproduct">CREATEPRODUCT</a>
     <a class="text-2xl" href="/cart"><i class="ri-shopping-cart-line relative ">
-      <%if(!newcart || !newcart.product){%>
-        <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold">0</small>
-        <%}else{%>
-          <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold"><%=newcart.product.length%></small>
-       <%}%>
-    </i></a>
+        <%if(!newcart || !newcart.product){%>
+          <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold">0</small>
+          <%}else{%>
+            <small class="absolute top-[-75%] left-[30%] text-yellow-400   text-[1vw]  font-bold">
+              <%=newcart.product.length%>
+            </small>
+            <%}%>
+      </i></a>
     <a href="/account">
       <img class="h-[2vw] w-[2vw] rounded-full" src="<%=user.image%>" alt="">
     </a>
-   </div>
-   <div class="lg:hidden sm:flex items-center  gap-[6vw] menucontainer relative ">
+  </div>
+  <div class="lg:hidden sm:flex items-center  gap-[6vw] menucontainer relative ">
     <a class="text-2xl" href="/cart"> <i class="ri-shopping-cart-line relative sm:text-4xl md:text-6xl ">
-      <%if(!newcart || !newcart.product){%>
-        <small class="absolute top-[0] left-[0] text-yellow-400   text-[1vw]  font-bold">0</small>
-        <%}else{%>
-          <small class="absolute top-[-20%] left-[30%] text-yellow-400   sm:text-[3vw]  font-bold"><%=newcart.product.length%></small>
-       <%}%>
-    </i>
-  </a>
+        <%if(!newcart || !newcart.product){%>
+          <small class="absolute top-[0] left-[0] text-yellow-400   text-[1vw]  font-bold">0</small>
+          <%}else{%>
+            <small class="absolute top-[-20%] left-[30%] text-yellow-400   sm:text-[3vw]  font-bold">
+              <%=newcart.product.length%>
+            </small>
+            <%}%>
+      </i>
+    </a>
     <a href="/account">
       <img class="sm:h-[5vw] w-[5vw] md:w-[8vw] md:h-[8vw] rounded-full" src="<%=user.image%>" alt="">
     </a>
-    <i class="ri-menu-3-line sm:text-5xl md:text-7xl cursor-pointer menuopen"></i> 
-    
-   </div>
-   <div class="flex flex-col px-5 md:pb-10 absolute sm:hidden rounded lg:hidden bg-slate-600 top-[24%] right-[4%] navlinks">
-    <i class="ri-close-large-fill absolute right-[0] p-2 cursor-pointer  sm:text-4xl md:text-6xl  menuclose hover:bg-slate-700"></i>
+    <i class="ri-menu-3-line sm:text-5xl md:text-7xl cursor-pointer menuopen"></i>
+
+  </div>
+  <div
+    class="flex flex-col px-5 md:pb-10 absolute sm:hidden rounded lg:hidden bg-slate-600 top-[24%] right-[4%] navlinks">
+    <i
+      class="ri-close-large-fill absolute right-[0] p-2 cursor-pointer  sm:text-4xl md:text-6xl  menuclose hover:bg-slate-700"></i>
     <a class="hover:underline md:text-3xl mt-[10vw] mb-7" href="/">HOME</a>
     <a class="hover:underline md:text-3xl mb-7" href="/about">ABOUT</a>
     <a class="hover:underline md:text-3xl mb-7" href="/product">PRODUCTS</a>
     <a class="hover:underline md:text-3xl mb-7" href="/contact">CONTACTUS</a>
     <a class="hover:underline md:text-3xl mb-7" href="/createproduct">CREATEPRODUCT</a>
   </div>
-  </nav>
-  <script>
-    const nav = document.querySelector("nav")
-const menucopen = document.querySelector(".menuopen")
-const navlinks = document.querySelector(".navlinks")
-const menuclose = document.querySelector(".menuclose")
-menucopen.addEventListener("click",function(){
-  navlinks.style.display ="flex"
-  menucopen.style.display ="none"
-})
-menuclose.addEventListener("click",function(){
-  navlinks.style.display ="none"
-    menucopen.style.display ="flex"
-})
-  </script>
+</nav>
+<script>
+  const nav = document.querySelector("nav")
+  const menucopen = document.querySelector(".menuopen")
+  const navlinks = document.querySelector(".navlinks")
+  const menuclose = document.querySelector(".menuclose")
+  menucopen.addEventListener("click", function () {
+    navlinks.style.display = "flex"
+    menucopen.style.display = "none"
+  })
+  menuclose.addEventListener("click", function () {
+    navlinks.style.display = "none"
+    menucopen.style.display = "flex"
+  })
+</script>

@@ -4,8 +4,8 @@
         <div class="flex justify-center items-center h-screen">
            
             <div class="flex relative  items-center justify-center lg:h-[55%] lg:w-[45%] bg-blue-900 rounded flex-col md:w-full md:h-1/2 ">
-                <a class="absolute top-[4%] right-[4%] lg:py-2 lg:px-6 lg:text-3xl md:text-5xl md:py-4 md:px-6 bg-blue-500 rounded"  href="/logout">Logout</a>
-                <a class="absolute top-[4%] left-[4%] lg:py-2 lg:px-6 lg:text-3xl md:text-5xl md:py-4 md:px-6 bg-blue-500 rounded"  href="/">Home</a>
+                <a class="absolute top-[4%] right-[4%] lg:py-2 lg:px-6 lg:text-3xl md:text-5xl md:py-4 md:px-6 bg-blue-600 rounded"  href="/logout">Logout</a>
+                <a class="absolute top-[4%] left-[4%] lg:py-2 lg:px-6 lg:text-3xl md:text-5xl md:py-4 md:px-6 bg-blue-600 rounded"  href="/">Home</a>
                 
                 <div class="lg:h-[10vw] lg:w-[10vw] md:h-[40vw] md:w-[40vw] bg-red-500 rounded-full mt-3 overflow-hidden mb-5 ">
                     <img class="object-cover object-bottom " src="<%= user.image%>" alt="">
@@ -19,7 +19,7 @@
                 <div>
                     <form class="lg:px-0 md:px-10" action="/users/profilechange" method="post" enctype="multipart/form-data">
                         <input type="file" class="lg:py-0 lg:text-2xl  md:py-10 md:text-5xl" name="profileimage" placeholder="Image_url" id="">
-                        <button class="lg:px-4 lg:py-2 md:px-7 md:py-5 lg:text-3xl md:text-6xl bg-blue-500 rounded">Change</button>
+                        <button class="lg:px-4 lg:py-2 md:px-7 md:py-5 lg:text-3xl md:text-6xl bg-blue-600 rounded">Change</button>
                     </form>
                 </div>
             </div>
