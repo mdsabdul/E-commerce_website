@@ -27,12 +27,12 @@ exports.signup = async (req, res) => {
          html: `Registration Successfully <br> welcome to our ecommerce plateform `
       }
       transport.sendMail(mailOption, (error) => {
-        if(error){
-         return console.log(error);
-         
-        }
-          console.log("mail sent");
-          
+         if (error) {
+            return console.log(error);
+
+         }
+         console.log("mail sent");
+
       })
       await newuser.save()
       res.redirect("/users/login")
@@ -58,19 +58,19 @@ exports.isLoggedin = (req, res, next) => {
 }
 const image = new Imagekit({
    publicKey: process.env.publicKey,
-   privateKey:process.env.privateKey,
+   privateKey: process.env.privateKey,
    urlEndpoint: process.env.urlEndpoint
 })
-exports.changeprofile =async(req, res) => {
+exports.changeprofile = async (req, res) => {
    // console.log(req.files);
    const user = req.user
-  const {url,fileId} =await image.upload({
-   file: req.files.profileimage.data,
-   fileName: req.files.profileimage.name,
-   
-  })
-  user.image = url
-  await user.save()
-  res.redirect("/account")
-    
+   const { url, fileId } = await image.upload({
+      file: req.files.profileimage.data,
+      fileName: req.files.profileimage.name,
+
+   })
+   user.image = url
+   await user.save()
+   res.redirect("/account")
+
 }
