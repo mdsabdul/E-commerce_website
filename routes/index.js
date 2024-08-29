@@ -71,5 +71,12 @@ router.get("/delete/:id", isLoggedin, async function (req, res) {
         res.send(error)
     }
 })
-
+router.get("/remove/:id", async function(req,res){
+try {
+    await Product.findByIdAndDelete(req.params.id)
+    res.redirect("/product")
+} catch (error) {
+    res.send(error)
+}
+})
 module.exports = router;

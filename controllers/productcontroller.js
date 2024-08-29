@@ -3,6 +3,9 @@ const product = require("../model/productmodel")
 exports.productpage = async (req, res) => {
   try {
     const allproducts = await product.find().populate("user")
+
+   
+    
     const newcart = await Cart.findOne({ user: req.user._id })
     res.render("products", { user: req.user, allproducts, newcart })
   } catch (error) {
