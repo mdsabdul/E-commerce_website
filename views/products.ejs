@@ -3,15 +3,15 @@
     <div class="fixed top-0 w-full z-10">
         <%- include("./partials/nav") %>
     </div>
-    <div class="w-full flex gap-8 px-10 mt-10 flex-wrap justify-center pb-5">
+    <div class="w-full flex gap-8 lg:px-10 md:px-20 mt-10 flex-wrap justify-center pb-5">
         <% allproducts.forEach((item) => { %>
-            <div class="w-[17vw] h-[52vh] bg-slate-800 rounded-[5px] overflow-hidden text-white">
-                <img class="h-[35vh] w-full object-cover object-top" src="<%= item.productimage %>" alt="">
-                <h4 class="px-4 pt-5 font-semibold text-[1.2rem] capitalize"><%= item.title %></h4>
-                <h4 class="px-4">Price - <%= item.price %> </h4>
-                <div class="flex justify-between px-4 mt-2">
-                    <a class="bg-slate-900 px-2 py-2 rounded text-slate-400" href="/cart">Buy Now</a>
-                    <a class="bg-slate-900 px-2 py-2 rounded text-slate-400" href="/addtocart/<%= item._id %>">Add To Cart</a>
+            <div class="lg:w-[17vw] lg:pb-2 md:pb-[2vw] md:w-full bg-slate-800 rounded-[5px] overflow-hidden text-white">
+                <img class="lg:h-[35vh] lg:w-full md:h-[100vw] md:w-full object-cover object-center" src="<%= item.productimage %>" alt="">
+                <h4 class="px-4 pt-5 font-semibold lg:text-[1.2rem] md:text-3xl capitalize"><%= item.title %></h4>
+                <h4 class="px-4 lg:text-xl md:text-3xl">Price - <%= item.price %> </h4>
+                <div class="flex justify-between px-4 lg:mt-2 md:mt-5">
+                    <a class="bg-slate-900 px-2 py-2 rounded text-slate-400 lg:text-xl md:text-4xl" href="/cart">Buy Now</a>
+                    <a class="bg-slate-900 px-2 py-2 rounded text-slate-400 lg:text-xl md:text-4xl" href="/addtocart/<%= item._id %>">Add To Cart</a>
                 </div>
             </div>
         <% }) %>
