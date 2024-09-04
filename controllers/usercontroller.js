@@ -9,8 +9,8 @@ passport.use(new localStretegy(User.authenticate()))
 const transport = nodemailer.createTransport({
    service: "Gmail",
    auth: {
-      user: "mdsabdul088@gmail.com",
-      pass: "nlza xyuf auys rayi"
+      user:process.env.user,
+      pass:process.env.pass
    }
 })
 exports.registerpage = (req, res) => {

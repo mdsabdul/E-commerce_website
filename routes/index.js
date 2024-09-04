@@ -10,10 +10,10 @@ const { use } = require('passport');
 /* GET home page. */
 router.get('/', isLoggedin, async function (req, res, next) {
     try {
-        const newcart = await Cart.findOne({ user:req.user._id })
-    //    console.log(newcart);
+     
+        const newcart = await Cart.findOne({user:req.user._id})
        
-        res.render('index', { user: req.user, newcart });
+        res.render('index', {user:req.user, newcart });
     } catch (error) {
         res.send(error)
     }
@@ -77,7 +77,18 @@ router.get("/delete/:id", isLoggedin, async function (req, res) {
 })
 router.get("/remove/:id", async function(req,res){
 try {
-    await Product.findByIdAndDelete(req.params.id)
+    const user = req.user
+ 
+  const deletedproduct =  await Product.findByIdAndDelete(req.params.id)
+  const cart = await Cart.findOne({ user: req.user._id })
+  
+  if(deletedproduct){
+    
+    user.cart = user.cart.filter(productid => productid.toString() !== deletedproduct._id)
+    await user.save()
+  }
+
+ 
     res.redirect("/product")
 } catch (error) {
     res.send(error)
