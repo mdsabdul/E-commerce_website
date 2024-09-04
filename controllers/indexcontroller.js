@@ -66,7 +66,7 @@ exports.placedorder=(req,res)=>{
     const user = req.user
     const mailOption = {
         from: "mdsabdul088@gmail.com",
-        to: req.user.email,
+        to:user.email,
         subject: "Order Placed Successfully",
         html: `<h1> pay by cash and get your order <br> Thank You for Shopping here <br> Come again ❤️</h1>`
      }
