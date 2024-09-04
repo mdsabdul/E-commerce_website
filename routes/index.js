@@ -5,6 +5,7 @@ const Product = require("../model/productmodel");
 const { aboutpage, contactpage, cartpage, accountpage,placedorder } = require("../controllers/indexcontroller");
 const { createproducts, createitem, productpage } = require("../controllers/productcontroller");
 const { isLoggedin } = require("../controllers/usercontroller");
+const { use } = require('passport');
 
 /* GET home page. */
 router.get('/', isLoggedin, async function (req, res, next) {
@@ -63,9 +64,12 @@ router.get("/addtocart/:id", isLoggedin, async function (req, res, next) {
 });
 router.get("/delete/:id", isLoggedin, async function (req, res) {
     try {
+        const user = req.user
         const cart = await Cart.findOne({ user: req.user._id })
         cart.product = cart.product.filter(productid => productid.toString() !== req.params.id)
+        user.cart = user.cart.filter(productid => productid.toString() !== req.params.id)
         await cart.save();
+        await user.save()
         res.redirect("/cart")
     } catch (error) {
         res.send(error)
