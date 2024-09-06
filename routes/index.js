@@ -7,6 +7,62 @@ const { createproducts, createitem, productpage } = require("../controllers/prod
 const { isLoggedin } = require("../controllers/usercontroller");
 const { use } = require('passport');
 
+//payment gateway
+
+const Razorpay = require("razorpay");
+const { model } = require('mongoose');
+var instance = new Razorpay({
+  key_id: process.env.key_id,
+  key_secret: process.env.key_secret,
+});
+
+router.post("/create/orderId", async(req,res,next)=>{
+
+ try {
+const User = require("../model/usermodel")
+const cart = require("../model/cartmodel")
+
+   const detail = await cart.findOne({user : req.user._id}).populate("user").populate({path:"product",model:"product"}).exec()
+  let totalamount = 0
+  detail.product.forEach(item =>{
+     totalamount += parseFloat(item.price)
+     
+  })
+ 
+  var options = {
+    amount: totalamount * 100,  // amount in the smallest currency unit
+    currency: "INR",
+    receipt: `${req.user._id}`
+  };
+  instance.orders.create(options, function(err, order) {
+    if(err){
+      res.send("something Went Wrong")
+    }
+    // console.log(order);
+    res.send(order)
+  });
+ } catch (error) {
+  res.send(error)
+ }
+})
+router.post("/api/payment/verify",(req,res,next)=>{
+  const razorpayPaymentId = req.body.razorpay_payment_id;
+  const razorpayOrderId = req.body.razorpay_order_id;
+  const razorpaySignature = req.body.razorpay_signature;
+
+  const secret = process.env.key_secret;
+
+  const generatedSignature =(razorpayOrderId + '|' + razorpayPaymentId ,secret,razorpaySignature)
+   
+
+  if (generatedSignature === razorpaySignature) {
+    res.send({ status: 'success' });
+  } else {
+    res.send({ status: 'failure' });
+  }
+ 
+})
+
 /* GET home page. */
 router.get('/', isLoggedin, async function (req, res, next) {
     try {

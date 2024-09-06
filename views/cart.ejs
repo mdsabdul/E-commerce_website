@@ -44,9 +44,82 @@
       
       <h4 class="mb-4 lg:text-xl md:text-3xl">Price (<%= newcart.product.length %> items) - <span class="text-lg md:text-xl"><%= totalPrice.toFixed(2) %></span></h4>
       <h4 class="mb-4 font-semibold lg:text-xl md:text-3xl">Total Amount - <span class="text-lg lg:text-2xl md:text-3xl"><%= totalPrice.toFixed(2) %></span></h4>
-      <a class="bg-yellow-400 lg:text-xl md:text-4xl px-4 lg:py-2 md:py-5 mt-10 text-black font-semibold rounded block text-center" href="/placeorder">Place order</a>
+      <a id="rzp-button1" class="bg-yellow-400 lg:text-xl md:text-4xl px-4 lg:py-2 md:py-5 mt-10 text-black font-semibold rounded block text-center" href="/placeorder">Place order</a>
     <% } %>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  
+    $(document).ready(function () {
+      var settings = {
+        "url": "/create/orderId",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+          "amount": "1"
+        }),
+      };
+
+      $.ajax(settings).done(function (response) {
+        var options = {
+          "key": "rzp_test_t8Sj2bIgJOH8bE", // Enter the Key ID generated from the Dashboard
+          "amount": response.amount, // Amount is in currency subunits. Default currency is INR. Hence, 1 refers to 1 paise
+          "currency": "INR",
+          "name": "Ice Corp",
+          "description": "Test Transaction",
+          "image": "https://t4.ftcdn.net/jpg/02/54/52/41/360_F_254524108_02F5WuB1dSqcTz2AaEzzSfZuj4sguU2l.jpg",
+          "order_id": response.id, // Order ID from the server response
+          "handler": function (response) {
+            var settings1 = {
+              "url": "/api/payment/verify",
+              "method": "POST",
+              "timeout": 0,
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "data": JSON.stringify(response),
+            };
+            $.ajax(settings1).done(function (verifyResponse) {
+              if (verifyResponse.status === 'success') {
+                window.location.href = "/success";
+              } else {
+                alert("Payment failed");
+              }
+            });
+          },
+          "notes": {
+            "address": "Razorpay Corporate Office",
+            "remarks": "udhari na mange"
+          },
+          "theme": {
+            "color": "#3399cc"
+          }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+          alert(response.error.code);
+          alert(response.error.description);
+          alert(response.error.source);
+          alert(response.error.step);
+          alert(response.error.reason);
+          alert(response.error.metadata.order_id);
+          alert(response.error.metadata.payment_id);
+        });
+        document.getElementById('rzp-button1').onclick = function (e) {
+          rzp1.open();
+          e.preventDefault();
+        }
+
+        console.log(response.id);
+        $("#rzp-button1").show();
+      });
+    });
+  </script>
+</script>
 
 <%- include("./partials/footer") %>
