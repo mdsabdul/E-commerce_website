@@ -68,7 +68,7 @@ exports.placedorder=(req,res)=>{
         from: "mdsabdul088@gmail.com",
         to:user.email,
         subject: "Order Placed Successfully",
-        html: `<h1> pay by cash and get your order <br> Thank You for Shopping here <br> Come again ❤️</h1>`
+        html: `<h1> Congratulations <br> Thank You for Shopping here <br> Come again ❤️</h1>`
      }
      transport.sendMail(mailOption, (error) => {
        if(error){

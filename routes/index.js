@@ -38,7 +38,7 @@ const cart = require("../model/cartmodel")
     if(err){
       res.send("something Went Wrong")
     }
-    // console.log(order);
+    console.log(order);
     res.send(order)
   });
  } catch (error) {
