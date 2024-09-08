@@ -10,7 +10,7 @@ width:100%;
 }
 #preloader{
  background: #101010 url("../images/preloader.gif") no-repeat center center;
-background-size: 18%;
+background-size: 20%;
     height: 100vh;
     width: 100%;
     position: fixed;
