@@ -8,5 +8,12 @@
 </head>
 
 <body class="relative">
+  <div id="preloader"></div>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/javascripts/script.js"></script>
+  <script>
+    let loader = document.getElementById("preloader")
+    window.addEventListener("load",function(){
+      loader.style.display = "none"
+    })
+  </script>
